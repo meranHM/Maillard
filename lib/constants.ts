@@ -1,0 +1,1 @@
+// App constants (roles, statuses, etc.)

@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+:root {
+  --font-parastoo: "Parastoo", sans-serif;
+}
+
+@theme inline {
+  /* COLORS */
+  --color-gray-900: #1A1A1A;
+  --color-gray-900a: #030303;
+
+  --color-gray-800: #333333;
+  --color-gray-800a: #0A0A0A;
+
+  --color-gray-700: #4D4D4D;
+  --color-gray-700a: #171717;
+
+  --color-gray-600: #666666;
+  --color-gray-600a: #292929;
+
+  --color-gray-500: #808080;
+  --color-gray-500a: #404040;
+
+  --color-gray-400: #999999;
+  --color-gray-400a: #5C5C5C;
+
+  --color-gray-300: #B2B2B2;
+  --color-gray-300a: #7D7D7D;
+
+  --color-gray-200: #CCCCCC;
+  --color-gray-200a: #A3A3A3;
+
+  --color-gray-150: #D9D9D9;
+  --color-gray-150a: #B8B8B8;
+
+  --color-gray-100: #E5E5E5;
+  --color-gray-100a: #CECECE;
+
+  --color-gray-50: #F2F2F2;
+  --color-gray-50a: #E6E6E6;
+
+  /* TYPOGRAPHY */
+  /* Display */
+  --text-display-md: 400 64px/72px "Parastoo";
+  --tracking-display-md: -0.0.15em;
+
+  /* Headline */
+  --text-headline-md: 400 40px/56px "Parastoo";
+  --tracking-headline-lg: -0.04em;
+
+  /* Title */
+  --text-title-medium: 400 18px/32px "Parastoo";
+
+  --text-title-small: 400 16px/26px "Parastoo";
+
+  /* Label */
+  --text-label-lg: 400 16px/24px "Parastoo";
+
+  --text-label-md: 400 12px/20px "Parastoo";
+
+  /* Body */
+  --text-body-lg: 400 16px/24px "Parastoo";
+  
+  --text-body-md: 400 14px/22px "Parastoo";
+
+  --text-body-sm: 400 12px/16px "Parastoo";
+}
+
+body {
+  font-family: var(--font-parastoo);
+}
