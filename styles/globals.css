@@ -56,12 +56,14 @@
   /* Label */
   --text-label-lg: 400 16px/24px "Parastoo";
 
-  --text-label-md: 400 12px/20px "Parastoo";
+  --text-label-md: 400 14px/20px "Parastoo";
+
+  --text-label-sm: 400 12px/16px "Parastoo";
 
   /* Body */
   --text-body-lg: 400 16px/24px "Parastoo";
   
-  --text-body-md: 400 14px/22px "Parastoo";
+  --text-body-md: 400 14px/20px "Parastoo";
 
   --text-body-sm: 400 12px/16px "Parastoo";
 }
