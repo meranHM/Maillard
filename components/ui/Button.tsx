@@ -23,7 +23,7 @@ export const Button = ({
     return (
         <button
             className={clsx(
-                "rounded-[36px] cursor-pointer transition-colors",
+                "flex items-center rounded-[36px] cursor-pointer transition-colors text-nowrap",
                 sizeStyles[size],
                 variantClasses.rest,
                 variantClasses.hover,

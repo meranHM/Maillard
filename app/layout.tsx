@@ -5,22 +5,22 @@ import locaLFont from "next/font/local"
 const parastoo = locaLFont({
   src: [
     {
-      path: "/fonts/Parastoo.woff2",
+      path: "./fonts/Parastoo.woff2",
       weight: "400",
       style: "normal",
     },
     {
-      path: "/fonts/Parastoo-Bold.woff2",
+      path: "./fonts/Parastoo-Bold.woff2",
       weight: "700",
       style: "normal",
     },
     {
-      path: "/fonts/Parastoo-FD.woff2",
+      path: "./fonts/Parastoo-FD.woff2",
       weight: "400",
       style: "normal",
     },
     {
-      path: "/fonts/Parastoo-Bold-FD.woff2",
+      path: "./fonts/Parastoo-Bold-FD.woff2",
       weight: "700",
       style: "normal",
     },
