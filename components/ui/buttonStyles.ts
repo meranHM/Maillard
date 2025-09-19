@@ -7,30 +7,36 @@ export const sizeStyles = {
 export const variantStyles = {
     outline: {
         rest: "border border-black bg-white text-black shadow-sm backdrop-blur-sm",
-        hover: "border border-black bg-gray-100 text-black shadow-md backdrop-blur-md",
-        selected: "border border-black bg-black text-white shadow-md backdrop-blur-md",
-        disabled: "border border-gray-300 bg-gray-50 text-gray-500 shadow-sm backdrop-blur-sm",
+        hover: "hover:bg-gray-100  hover:shadow-md hover:backdrop-blur-md",
+        selected: "aria-selected:border-black aria-selected:bg-black aria-selected:text-white",
+        disabled: "disabled:border-gray-300 disabled:bg-gray-50 disabled:text-gray-500 disabled:shadow-sm disabled:backdrop-blur-sm disabled:cursor-not-allowed",
     },
     fill: {
         rest: "border border-black bg-black text-white shadow-sm backdrop-blur-sm",
-        hover: "border border-black bg-gray-600a text-white shadow-md backdrop-blur-md",
-        selected: "border border-black bg-black text-white shadow-md backdrop-blur-md",
-        disabled: "border border-gray-50 bg-gray-50 text-gray-300 shadow-sm backdrop-blur-sm",
+        hover: "hover:bg-gray-600 hover:shadow-md hover:backdrop-blur-md",
+        selected: "aria-selected:bg-black aria-selected:text-white",
+        disabled: "disabled:border-gray-50 disabled:bg-gray-50 disabled:text-gray-300 disabled:cursor-not-allowed",
     },
     text: {
         rest: "border-none text-black backdrop-blur-sm",
-        hover: "border-none text-gray-800 backdrop-blur-md",
-        selected: "border-none text-black backdrop-blur-md",
-        disabled: "border-none text-gray-500 backdrop-blur-sm",
+        hover: "hover:text-gray-800 hover:backdrop-blur-md",
+        selected: "aria-selected:text-black aria-selected:backdrop-blur-md",
+        disabled: "disabled:text-gray-500 disabled:cursor-not-allowed",
     },
     tonal: {
         rest: "border-none bg-gray-50 text-black backdrop-blur-sm",
-        hover: "border-none bg-gray-100a text-black backdrop-blur-md",
-        selected: "border border-black bg-black text-white backdrop-blur-md",
-        disabled: "border border-gray-50 bg-gray-50 text-gray-300 backdrop-blur-sm",
+        hover: "hover:bg-gray-100 hover:backdrop-blur-md",
+        selected: "aria-selected:border-black aria-selected:bg-black aria-selected:text-white",
+        disabled: "disabled:bg-gray-50 disabled:text-gray-300 disabled:cursor-not-allowed",
     },
+}
+
+export const fabSizeStyles = {
+    sm: "p-1 w-8 h-8 text-label-md",
+    md: "p-2 w-10 h-10 text-label-md",
+    lg: "p-4 w-14 h-14 text-label-lg",    
 }
 
 export type ButtonSize = keyof typeof sizeStyles
 export type ButtonVariant = keyof typeof variantStyles
-export type ButtonState = keyof typeof variantStyles["fill"]
+export type FabSize = keyof typeof fabSizeStyles

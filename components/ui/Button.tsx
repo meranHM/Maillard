@@ -1,11 +1,11 @@
 import { ReactNode, ButtonHTMLAttributes } from "react"
-import { sizeStyles, variantStyles, ButtonSize, ButtonVariant, ButtonState } from "./buttonStyles"
+import { sizeStyles, variantStyles, ButtonSize, ButtonVariant } from "./buttonStyles"
 import clsx from "clsx"
 
 type ButtonProps = {
-    size?: "sm" | "md" | "lg"
-    variant?: "fill" | "outline" | "text" | "tonal"
-    state?: "rest" | "hover" | "selected" |"disabled"
+    size?: ButtonSize
+    variant?: ButtonVariant
+    isSelected?: boolean,
     children: ReactNode
 } & ButtonHTMLAttributes<HTMLButtonElement>
 
@@ -13,15 +13,26 @@ type ButtonProps = {
 export const Button = ({
     size = "md",
     variant = "fill",
-    state = "rest",
+    isSelected = false,
     children,
+    className,
     ...props
 }: ButtonProps) => {
+    const variantClasses = variantStyles[variant]
+
     return (
         <button
-            className={clsx(sizeStyles[size], variantStyles[variant][state], "rounded-[36px]")}
+            className={clsx(
+                "rounded-[36px] cursor-pointer transition-colors",
+                sizeStyles[size],
+                variantClasses.rest,
+                variantClasses.hover,
+                variantClasses.disabled,
+                isSelected && variantClasses.selected,
+                className,
+            )}
+            aria-selected={isSelected}
             {...props}
-            disabled={state === "disabled"}
         >
             {children}
         </button>

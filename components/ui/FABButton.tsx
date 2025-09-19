@@ -1,32 +1,38 @@
 import { ReactNode, ButtonHTMLAttributes } from "react"
-import { sizeStyles, variantStyles, ButtonSize, ButtonState } from "./buttonStyles"
+import { fabSizeStyles, variantStyles, FabSize } from "./buttonStyles"
 import clsx from "clsx"
 
 type FABButtonProps = {
-    size?: "sm" | "md" | "lg"
-    state?: "rest" | "hover" | "selected" | "disabled"
-    children: ReactNode
+    size?: FabSize
     floating?: boolean
+    isSelected?: boolean,
+    children: ReactNode
 } & ButtonHTMLAttributes<HTMLButtonElement>
 
 
 export const FABButton = ({
     size = "md",
-    state = "rest",
-    children,
     floating = false,
+    isSelected = false,
+    children,
+    className,
     ...props
 }: FABButtonProps) => {
+    const variantClasses = variantStyles.fill
+
     return (
         <button
             className={clsx(
-                sizeStyles[size],
-                variantStyles.fill[state],
-                "rounded-full",
+                "flex items-center justify-center rounded-full cursor-pointer transition-colors",
+                fabSizeStyles[size],
+                variantClasses.rest,
+                variantClasses.hover,
+                variantClasses.disabled,
+                isSelected && variantClasses.selected,
                 floating && "fixed bottom-6 right-6"
             )}
+            aria-selected={isSelected}
             {...props}
-            disabled={state === "disabled"}
         >
             {children}
         </button>
