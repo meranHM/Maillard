@@ -1,0 +1,30 @@
+import { SVGProps } from "react"
+
+export function CartIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <mask
+        id="mask0_2066_2241"
+        style={{ maskType: "alpha" }}
+        maskUnits="userSpaceOnUse"
+        x="0"
+        y="0"
+        width="24"
+        height="24"
+      >
+        <rect width="24" height="24" fill="#D9D9D9" />
+      </mask>
+      <g mask="url(#mask0_2066_2241)">
+        <path
+          d="M5 21V7H8.5V6.5C8.5 5.52817 8.84042 4.70192 9.52125 4.02125C10.2019 3.34042 11.0282 3 12 3C12.9718 3 13.7981 3.34042 14.4788 4.02125C15.1596 4.70192 15.5 5.52817 15.5 6.5V7H19V21H5ZM6 20H18V8H15.5V11H14.5V8H9.5V11H8.5V8H6V20ZM9.5 7H14.5V6.5C14.5 5.79617 14.2593 5.2035 13.778 4.722C13.2965 4.24067 12.7038 4 12 4C11.2962 4 10.7035 4.24067 10.222 4.722C9.74067 5.2035 9.5 5.79617 9.5 6.5V7Z"
+          fill="currentColor"
+        />
+      </g>
+    </svg>
+  )
+}

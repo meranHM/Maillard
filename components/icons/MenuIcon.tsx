@@ -1,0 +1,30 @@
+import { SVGProps } from "react"
+
+export function MenuIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <mask
+        id="mask0_2255_965"
+        style={{ maskType: "alpha" }}
+        maskUnits="userSpaceOnUse"
+        x="0"
+        y="0"
+        width="24"
+        height="24"
+      >
+        <rect width="24" height="24" fill="#D9D9D9" />
+      </mask>
+      <g mask="url(#mask0_2255_965)">
+        <path
+          d="M4 7V6H20V7H4ZM4 18V17H20V18H4ZM4 12.5V11.5H20V12.5H4Z"
+          fill="currentColor"
+        />
+      </g>
+    </svg>
+  )
+}
