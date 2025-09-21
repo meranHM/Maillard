@@ -146,7 +146,7 @@ export const Header = () => {
 
   return (
     <header
-      className="w-full bg-white backdrop-blur-lg sticky top-0 z-40"
+      className="w-full bg-white backdrop-blur-lg sticky top-0 z-40 mt-13 lg:mt-0"
     >
       <div
         className="mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 h-16"
