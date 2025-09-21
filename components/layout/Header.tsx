@@ -1,13 +1,21 @@
 "use client"
 
 import Image from "next/image"
-import { useState } from "react"
+import AnimatedContainer from "../ui/AnimatedContainer"
+import { motion, AnimatePresence } from "motion/react"
+import { useUiStore } from "@/store/uiStore"
 import { MenuIcon } from "../icons/MenuIcon"
 import { CartIcon } from "../icons/CartIcon"
 import { CloseIcon } from "../icons/CloseIcon"
 import { ProfileIcon } from "../icons/ProfileIcon"
 import { Button } from "../ui/Button"
 import Link from "next/link"
+
+const navLinks = [
+  { href: "/", label: "جستجو" },
+  { href: "/blog", label: "مجله قهوه" },
+  { href: "/about", label: "درباره ما" },
+]
 
 const Logo = ({ className }: { className?: string }) => (
   <Link
@@ -23,36 +31,7 @@ const Logo = ({ className }: { className?: string }) => (
   </Link>
 )
 
-/* Desktop View */
-const NavLinks = () => (
-  <nav
-    className="hidden lg:flex gap-6"
-    aria-label="Primary"
-  >
-    <Link
-      className="hover:shadow-sm transition-shadow"
-      href="/"
-    >
-      جستجو
-    </Link>
-
-    <Link
-      className="hover:shadow-sm transition-shadow"
-      href="/blog"
-    >
-      مجله قهوه
-    </Link>
-
-    <Link
-      className="hover:shadow-sm transition-shadow"
-      href="/about"
-    >
-      درباره ما
-    </Link>
-  </nav>
-)
-
-const CartButton = () => (
+const CartButton = ({ count = 2 }: { count?: number }) => (
   <Button
     className="relative p-2 hover:bg-gray-150a transition-colors"
     variant="text"
@@ -64,7 +43,7 @@ const CartButton = () => (
     <span
       className="absolute -top-1 -right-1 text-xs bg-red-500 text-white rounded-full px-1"
     >
-      2
+      {count}
     </span>
   </Button>
 )
@@ -91,48 +70,79 @@ const HamburgerMenu = ({ onToggle }: { onToggle: () => void }) => (
   </Button>
 )
 
+/* Desktop View */
+const NavLinks = () => (
+  <nav
+    className="hidden lg:flex gap-6"
+    aria-label="Primary"
+  >
+    {navLinks.map((link) => (
+      <Link
+        className="hover:shadow-sm transition-shadow"
+        key={link.href}
+        href={link.href}
+      >
+        {link.label}
+      </Link>
+    ))}
+  </nav>
+)
+
 /* Mobile Navbar Menu */
 const MobileDrawer = ({
   isOpen,
-  onClose,
+  onToggle,
 }: {
   isOpen: boolean
-  onClose: () => void
+  onToggle: () => void
 }) => {
-  if (!isOpen) return null
   return (
-    <div
-      className="fixed inset-0 z-50 bg-black/50 lg:hidden"
-    >
-      <div
-        className="fixed top-0 left-0 h-full w-64 bg-white shadow-lg p-4"
-      >
-        <Button
-          className="mb-6 p-2"
-          variant="text"
-          onClick={onClose}
-          aria-label="Close menu"
+    <AnimatePresence>
+      {isOpen && (
+        <AnimatedContainer
+          className="fixed inset-0 w-screen h-screen z-50 bg-black/50 lg:hidden"
+          variant="fade"
         >
-          <CloseIcon className="w-5 h-5"/>
-        </Button>
-        <nav
-          className="flex flex-col gap-4"
-        >
-          <Link href="/">جستجو</Link>
+          <motion.div
+            className="fixed top-0 right-0 w-64 h-screen bg-white shadow-lg p-4"
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            transition={{ type: "tween", duration: 0.3 }}
+          >
+            <Button
+              className="mb-6 p-2"
+              variant="text"
+              onClick={onToggle}
+              aria-label="Close menu"
+            >
+              <CloseIcon className="w-6 h-6"/>
+            </Button>
+            
+            <nav
+              className="flex flex-col gap-4"
+            >
+              {navLinks.map((link) => (
+                <Link
+                  className="hover:shadow-sm transition-shadow"
+                  key={link.href}
+                  href={link.href}
+                >
+                  {link.label}
+                </Link>
+              ))}
 
-          <Link href="/blog">مجله قهوه</Link>
-
-          <Link href="/about">درباره ما</Link>
-
-          <Link href="/profile">حساب کاربری</Link>
-        </nav>
-      </div>
-    </div>
+              <Link href="/profile">حساب کاربری</Link>
+            </nav>
+          </motion.div>
+        </AnimatedContainer>
+      )}
+    </AnimatePresence>
   )
 }
 
 export const Header = () => {
-  const [menuOpen, setMenuOpen] = useState<boolean>(false)
+  const { mobileNavbarOpen, toggleMobileNavbar } = useUiStore()
 
   return (
     <header
@@ -149,7 +159,7 @@ export const Header = () => {
             className="flex items-center gap-2"
           >
             <HamburgerMenu 
-              onToggle={() => setMenuOpen(true)}
+              onToggle={() => toggleMobileNavbar()}
             />
             <CartButton />
           </div>
@@ -176,7 +186,7 @@ export const Header = () => {
       </div>
 
       {/* Mobile Navbar */}
-      <MobileDrawer isOpen={menuOpen} onClose={() => setMenuOpen(false)}/>
+      <MobileDrawer isOpen={mobileNavbarOpen} onToggle={() => toggleMobileNavbar()}/>
     </header>
   )
 }
