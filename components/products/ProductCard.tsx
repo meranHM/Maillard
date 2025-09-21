@@ -26,7 +26,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
             className="flex flex-col h-full space-y-6"
         >
             <div
-                className="h-2/3"
+                className="h-2/3 bg-[#FBFBFB]"
             >
                 <Image
                     className="w-full h-full object-cover"

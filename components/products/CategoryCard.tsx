@@ -22,7 +22,9 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
             <div
                 className="flex flex-col h-full"
             >
-                <div>
+                <div
+                    className="bg-[#FBFBFB]"
+                >
                     <Image
                         className="w-full h-full object-cover"
                         src={imgSrc}
