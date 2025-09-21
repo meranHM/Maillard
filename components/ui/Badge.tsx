@@ -5,29 +5,32 @@ import clsx from "clsx"
 type BadgeProps = {
     size?: BadgeSize
     variant?: BadgeVariant
+    state?: "rest" | "hover" | "selected" | "disabled"
     children: ReactNode
 } & ButtonHTMLAttributes<HTMLButtonElement>
 
 
+const getBadgeClasses = (
+    size: BadgeSize, 
+    variant: BadgeVariant, 
+    state: "rest" | "hover" | "selected" | "disabled"
+) => {
+    return clsx(sizeStyles[size], variantStyles[variant][state])
+}
+
 export const Badge = ({
     size = "md",
     variant = "fill",
+    state = "rest",
     children,
     className,
     ...props
 }: BadgeProps) => {
-    const variantClasses = variantStyles[variant]
+
 
     return (
         <span
-            className={clsx(
-                "flex items-center rounded-[36px] text-nowrap",
-                sizeStyles[size],
-                variantClasses.rest,
-                variantClasses.hover,
-                variantClasses.disabled,
-                className,
-            )}
+            className={`${getBadgeClasses(size, variant, state)} rounded-[36px]`}
             {...props}
         >
             {children}

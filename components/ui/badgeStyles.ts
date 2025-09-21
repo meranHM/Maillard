@@ -31,5 +31,7 @@ export const variantStyles = {
     },
 }
 
+
+
 export type BadgeSize = keyof typeof sizeStyles
 export type BadgeVariant = keyof typeof variantStyles
