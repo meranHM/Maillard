@@ -58,7 +58,7 @@ const CartButton = () => (
     variant="text"
     aria-label="Cart"
   >
-    <CartIcon className="w-5 h-5"/>
+    <CartIcon className="w-6 h-6"/>
 
     {/* Item Count */}
     <span
@@ -75,7 +75,7 @@ const ProfileButton = () => (
     variant="text"
     aria-label="Profile"
   >
-    <ProfileIcon className="w-5 h-5"/>
+    <ProfileIcon className="w-6 h-6"/>
   </Button>
 )
 
@@ -87,7 +87,7 @@ const HamburgerMenu = ({ onToggle }: { onToggle: () => void }) => (
     onClick={onToggle}
     aria-label="Open Menu"
   >
-    <MenuIcon className="w-5 h-5"/>
+    <MenuIcon className="w-6 h-6"/>
   </Button>
 )
 
