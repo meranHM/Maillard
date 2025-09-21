@@ -145,48 +145,51 @@ export const Header = () => {
   const { mobileNavbarOpen, toggleMobileNavbar } = useUiStore()
 
   return (
-    <header
-      className="w-full bg-white backdrop-blur-lg sticky top-0 z-40 mt-13 lg:mt-0"
-    >
-      <div
-        className="mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 h-16"
+    <>
+      <header
+        className="w-full bg-white/60 backdrop-blur-lg sticky mt-13 top-0 z-40"
       >
-        {/* Mobile Header */}
         <div
-          className="flex w-full items-center justify-between lg:hidden"
+          className="mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 h-16"
         >
+          {/* Mobile Header */}
           <div
-            className="flex items-center gap-2"
+            className="flex w-full items-center justify-between lg:hidden"
           >
-            <HamburgerMenu 
-              onToggle={() => toggleMobileNavbar()}
-            />
-            <CartButton />
+            <div
+              className="flex items-center sm:gap-2"
+            >
+              <HamburgerMenu 
+                onToggle={() => toggleMobileNavbar()}
+              />
+              <CartButton />
+            </div>
+            <Logo />
           </div>
-          <Logo />
+
+          {/* Desktop Header */}
+          <div
+            className="hidden lg:grid lg:grid-cols-3 lg:items-center lg:w-full"
+          >
+            <div
+              className="flex gap-6"
+            >
+              <NavLinks />
+            </div>
+            <Logo className="mx-auto"/>
+            <div
+              className="flex justify-end gap-4"
+            >
+              <CartButton />
+              <ProfileButton />
+            </div>
+          </div>
         </div>
 
-        {/* Desktop Header */}
-        <div
-          className="hidden lg:grid lg:grid-cols-3 lg:items-center lg:w-full"
-        >
-          <div
-            className="flex gap-6"
-          >
-            <NavLinks />
-          </div>
-          <Logo className="mx-auto"/>
-          <div
-            className="flex justify-end gap-4"
-          >
-            <CartButton />
-            <ProfileButton />
-          </div>
-        </div>
-      </div>
+      </header>
 
       {/* Mobile Navbar */}
-      <MobileDrawer isOpen={mobileNavbarOpen} onToggle={() => toggleMobileNavbar()}/>
-    </header>
+      <MobileDrawer isOpen={mobileNavbarOpen} onToggle={() => toggleMobileNavbar()}/>    
+    </>
   )
 }
