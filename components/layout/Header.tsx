@@ -31,7 +31,7 @@ const Logo = ({ className }: { className?: string }) => (
   </Link>
 )
 
-const CartButton = ({ count = 2 }: { count?: number }) => (
+const CartButton = ({ count = 4 }: { count?: number }) => (
   <Button
     className="relative p-2 hover:bg-gray-150a transition-colors"
     variant="text"
@@ -41,7 +41,7 @@ const CartButton = ({ count = 2 }: { count?: number }) => (
 
     {/* Item Count */}
     <span
-      className="absolute -top-1 -right-1 text-xs bg-red-500 text-white rounded-full px-1"
+      className="absolute top-1 right-1 text-xs bg-red-500 text-white rounded-full px-1" 
     >
       {count}
     </span>
