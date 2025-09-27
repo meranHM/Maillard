@@ -45,7 +45,7 @@ const Hero = () => {
             </div>
 
             {/* Carousel Indicators */}
-            <div
+            <div 
                 className="flex gap-2 z-20"
             >
                 {slides.map((_, index) => (

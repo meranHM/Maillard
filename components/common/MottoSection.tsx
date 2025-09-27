@@ -6,16 +6,17 @@ import { ArrowLeftIcon } from "../icons/ArrowLeftIcon"
 const MottoSection = () => {
   return (
     <Container
-      className="relative w-full max-w-[371px] h-[500px] bg-gradient-to-b from-[#FAFAFA] via-[#FFFFFF00] to-[#F0F0F0]"
+      className="relative w-full max-w-7xl h-[500px] bg-gradient-to-b from-[#FAFAFA] via-[#FFFFFF00] to-[#F0F0F0]"
     >
       <div
-        className="z-0"
+        className="z-0 absolute w-full max-w-[371px] h-auto"
       >
         <Image
           className="object-cover object-center pointer-events-none select-none"
           src="/images/motto-section-image.png"
           alt="Decorative"
-          fill
+          width={371}
+          height={500}
         />
       </div>
 
