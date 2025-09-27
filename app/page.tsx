@@ -1,20 +1,20 @@
 "use client"
 
-import GradientBackground from "@/components/ui/GradientBackground"
-import Image from "next/image"
-import { useUiStore } from "@/store/uiStore"
+import FloatingMenu from "@/components/common/FloatingMenu"
+import Hero from "@/components/common/Hero"
+import MottoSection from "@/components/common/MottoSection"
 
 export default function Home() {
-  const { next, prev } = useUiStore()
 
   return (
     <div 
-      className="h-screen flex flex-col items-center justify-center"
+      className="flex flex-col items-center px-5 gap-10 min-h-[200vh]"
     >
-      <GradientBackground />
-      <button onClick={next} className="p-4 cursor-pointer">Next</button>
+      <Hero />
 
-      <button onClick={prev} className="p-4 cursor-pointer">Prev</button>
+      <FloatingMenu />
+
+      <MottoSection />
     </div>
   )
 }

@@ -30,7 +30,7 @@ export const Badge = ({
 
     return (
         <span
-            className={`${getBadgeClasses(size, variant, state)} rounded-[36px]`}
+            className={`${getBadgeClasses(size, variant, state)} rounded-5xl`}
             {...props}
         >
             {children}

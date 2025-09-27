@@ -11,7 +11,7 @@ const links = [
 const FloatingMenu = () => {
   return (
     <div
-      className="fixed bottom-10 right-1/2 translate-x-1/2 flex items-center justify-between w-full max-w-[371px] h-14.5 px-1.5 bg-white/70 border border-gray-100 rounded-6xl backdrop-blur-[20px] overflow-hidden"
+      className="fixed bottom-10 right-1/2 translate-x-1/2 flex items-center justify-between w-full max-w-[371px] h-14.5 px-1.5 bg-white/70 border border-gray-100 rounded-6xl backdrop-blur-[20px] overflow-hidden z-50"
     >
       {links.map((link) => (
         <Link
