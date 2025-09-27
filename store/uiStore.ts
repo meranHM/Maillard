@@ -4,29 +4,31 @@ import { create } from "zustand"
 interface uiStoreState {
     mobileNavbarOpen: boolean
     toggleMobileNavbar: () => void
-    index: number
+    currentSlide: number
     angle: number
-    next: () => void
-    prev: () => void
+    nextSlide: (totalSlides: number) => void
+    goToSlide: (index: number, totalSlides: number) => void
 }
 
 export const useUiStore = create<uiStoreState>((set) => ({
-    index: 0,
+    currentSlide: 0,
     angle: 0,
     mobileNavbarOpen: false,
 
     toggleMobileNavbar: () => 
         set((state) => ({ mobileNavbarOpen: !state.mobileNavbarOpen })),
 
-    next: () =>
+    nextSlide: (total) =>
         set((state) => ({
-            index: state.index + 1,
+            currentSlide: (state.currentSlide + 1) % total,
             angle: state.angle + 45,
         })),
-    
-    prev: () =>
+
+    goToSlide: (index, total) =>
         set((state) => ({
-            index: state.index - 1,
-            angle: state.angle - 45,
-        })),
+            currentSlide: index % total,
+            angle: state.angle + 45
+        }))
+    
+
 }))
