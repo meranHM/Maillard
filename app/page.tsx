@@ -1,6 +1,7 @@
 "use client"
 
 import BestProducts from "@/components/common/BestProducts"
+import BlogSection from "@/components/common/BlogSection"
 import FavoritesSection from "@/components/common/FavoritesSection"
 import FloatingMenu from "@/components/common/FloatingMenu"
 import Hero from "@/components/common/Hero"
@@ -21,6 +22,8 @@ export default function Home() {
       <BestProducts />
 
       <FavoritesSection />
+
+      <BlogSection />
     </div>
   )
 }
