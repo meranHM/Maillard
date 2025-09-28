@@ -10,20 +10,22 @@ import MottoSection from "@/components/common/MottoSection"
 export default function Home() {
 
   return (
-    <div 
-      className="flex flex-col items-center px-5 space-y-18 min-h-[500vh]"
-    >
-      <Hero />
+    <>
+      <div 
+        className="flex flex-col items-center px-5 space-y-18 min-h-[500vh]"
+      >
+        <Hero />
+
+        <MottoSection />
+
+        <BestProducts />
+
+        <FavoritesSection />
+
+        <BlogSection />
+      </div>
 
       <FloatingMenu />
-
-      <MottoSection />
-
-      <BestProducts />
-
-      <FavoritesSection />
-
-      <BlogSection />
-    </div>
+    </>
   )
 }
