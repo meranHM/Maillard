@@ -35,15 +35,15 @@ const CategoryCard: React.FC<CategoryCardProps> = ({
                 </div>
 
                 <div
-                    className="flex flex-col p-4 gap-2"
+                    className="flex flex-col p-1 gap-2"
                 >
                     <h3
-                        className="text-black text-right font-semibold text-body-sm sm:text-label-md md:text-title-md lg:text-title-lg line-clamp-2"
+                        className="text-black text-right text-label-md md:text-title-md lg:text-title-lg line-clamp-2"
                     >
                         {title}
                     </h3>
                     <p
-                        className="text-label-sm text-right text-gray-500a line-clamp-4"
+                        className="text-label-sm text-right text-gray-500a line-clamp-3"
                     >
                         {description}
                     </p>

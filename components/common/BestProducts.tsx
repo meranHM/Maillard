@@ -86,12 +86,15 @@ const BestProducts = () => {
         >
             {placeholderProducts.map((product, index) => (
                 <div key={product.id} ref={index === 0 ? cardRef : null}>
-                    <ProductCard imgSrc={product.imgSrc} title={product.title} price={product.price} />
+                    <ProductCard 
+                        imgSrc={product.imgSrc} 
+                        title={product.title} 
+                        price={product.price} />
                 </div>
             ))}
         </section>
 
-      {/* Custom scrollbar track + thumb */}
+        {/* Custom scrollbar track + thumb */}
         <div className="relative h-0.5 bg-gray-150 mt-12">
             <div
                 className="absolute top-0 h-full bg-black transition-transform duration-75"
