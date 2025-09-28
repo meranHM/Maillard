@@ -2,7 +2,6 @@ import Card from "./Card"
 import { Button } from "../ui/Button"
 import Image from "next/image"
 
-
 interface ProductCardProps {
     imgSrc: string
     title: string
@@ -10,6 +9,7 @@ interface ProductCardProps {
     onClick?: () => void
     onSeeProduct?: () => void
 }
+
 
 const ProductCard: React.FC<ProductCardProps> = ({ 
     imgSrc, 
@@ -23,7 +23,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
         onClick={onClick}
     >
         <div
-            className="flex flex-col h-full space-y-6"
+            className="flex flex-col h-full space-y-4"
         >
             <div
                 className="h-2/3 bg-[#FBFBFB]"
@@ -38,10 +38,10 @@ const ProductCard: React.FC<ProductCardProps> = ({
             </div>
 
             <div
-                className="flex flex-col sm:flex-row sm:justify-between sm:items-center"
+                className="flex flex-row justify-between items-center"
             >
                 <h3
-                    className="text-black text-body-sm sm:text-label-md md:text-title-md line-clamp-1"
+                    className="text-black text-label-md md:text-title-md line-clamp-2"
                 >
                     {title}
                 </h3>

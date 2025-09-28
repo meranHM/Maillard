@@ -18,7 +18,7 @@ const Card: React.FC<CardProps> = ({
         <div
             className={clsx(
                 "flex flex-col gap-6 border-none cursor-pointer rounded-2xl overflow-hidden",
-                "w-full max-w-[397px] h-auto p-6",
+                "w-full min-w-[232px] h-auto",
                 className
             )}
             onClick={onClick}
