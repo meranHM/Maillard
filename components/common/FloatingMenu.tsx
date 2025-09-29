@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { MenuIcon } from "../icons/MenuIcon"
+import { useUiStore } from "@/store/uiStore"
 
 const links = [
   { label: "محصولات", href: "/" },
@@ -9,25 +10,45 @@ const links = [
 ]
 
 const FloatingMenu = () => {
+  const { mobileNavbarOpen } = useUiStore()
+
   return (
-    <div
-      className="fixed bottom-10 right-1/2 translate-x-1/2 flex items-center justify-between w-full max-w-[371px] h-14.5 px-1.5 bg-white/70 border border-gray-100 rounded-6xl backdrop-blur-[20px] overflow-hidden z-50"
-    >
-      {links.map((link) => (
-        <Link
-          className={`flex items-center px-1.5 py-2 xs:px-2 rounded-[37px] text-nowrap text-label-sm xs:text-label-lg ${
-            link.label === "محصولات" ? "bg-[#F2F2F2]/70 backdrop-blur-lg gap-1" : ""
-          }`}
-          key={link.label}
-          href={link.href}
+    <>
+      {!mobileNavbarOpen && (
+        <div
+          className="
+            fixed bottom-6 right-1/2 translate-x-1/2
+            flex items-center justify-between
+            w-[92%] sm:w-[90%] max-w-[371px]
+            h-12 sm:h-14
+            px-1 sm:px-2
+            bg-white/70 border border-gray-100 rounded-6xl
+            backdrop-blur-[20px] z-50
+            overflow-x-scroll xs:overflow-hidden
+          "
         >
-          {link.label === "محصولات" && (
-            <MenuIcon className="w-4 h-4"/>
-          )}
-          {link.label}
-        </Link>
-      ))}
-    </div>
+          {links.map((link) => (
+            <Link
+              className={`
+                flex items-center rounded-[37px] text-nowrap
+                px-2 py-1 sm:px-3 sm:py-2
+                text-label-xs sm:text-label-sm md:text-label-lg
+                ${link.label === "محصولات"
+                  ? "bg-[#F2F2F2]/70 backdrop-blur-lg gap-1"
+                  : ""}
+              `}
+              key={link.label}
+              href={link.href}
+            >
+              {link.label === "محصولات" && (
+                <MenuIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4"/>
+              )}
+              {link.label}
+            </Link>
+          ))}
+        </div>        
+      )}
+    </>
   )
 }
 
