@@ -15,7 +15,7 @@ export default function Home() {
         className="flex flex-col items-center px-5 space-y-18 min-h-[500vh]"
       >
         <Hero />
-
+ 
         <MottoSection />
 
         <BestProducts />

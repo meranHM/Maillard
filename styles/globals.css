@@ -249,3 +249,11 @@ body {
     @apply cursor-pointer disabled:cursor-not-allowed
   }
 }
+
+@layer components {
+  .widthLimit {
+    width: 100%;
+    max-width: 1280px;
+    margin-inline: auto;
+  }
+}

@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import "@/styles/globals.css"
 import locaLFont from "next/font/local"
 import { Header } from "@/components/layout/Header"
+import { Footer } from "@/components/layout/Footer"
 
 const parastoo = locaLFont({
   src: [
@@ -47,6 +48,7 @@ export default function RootLayout({
       >
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   )
