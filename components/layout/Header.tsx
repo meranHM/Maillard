@@ -150,7 +150,7 @@ export const Header = () => {
         className="w-full bg-white/60 backdrop-blur-lg sticky mt-13 lg:mt-0 top-0 z-40"
       >
         <div
-          className="w-full max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 h-16"
+          className="widthLimit flex items-center justify-between px-4 sm:px-6 lg:px-8 h-16"
         >
           {/* Mobile Header */}
           <div
