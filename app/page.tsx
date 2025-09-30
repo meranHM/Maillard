@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <>
       <div 
-        className="flex flex-col items-center px-5 space-y-18 min-h-[500vh]"
+        className="flex flex-col items-center px-5 space-y-6"
       >
         <Hero />
  

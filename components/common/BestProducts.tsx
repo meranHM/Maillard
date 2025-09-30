@@ -99,11 +99,11 @@ const BestProducts = () => {
         ))}
       </section>
 
-      {/* Desktop: grid with 3 items */}
+      {/* Desktop: flex with 3 items */}
       <section
+        className="hidden md:w-full md:flex md:justify-between md:items-center gap-6"
         role="list"
         aria-label="Best Products"
-        className="hidden md:grid md:grid-cols-3 md:gap-6"
       >
         {placeholderProducts.slice(0, 3).map((product) => (
           <div key={product.id} className="w-full">

@@ -8,7 +8,7 @@ const placeHolderBlogPosts = [
 const BlogSection = () => {
   return (
     <section
-        className="flex flex-col gap-4"
+        className="widthLimit flex flex-col md:flex-row md:justify-between gap-4 mt-18 md:mt-22 lg:mt-32"
     >
         {placeHolderBlogPosts.map((blog) => (
             <BlogCard 

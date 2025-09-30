@@ -12,7 +12,7 @@ interface BlogCardProps {
 const BlogCard: React.FC<BlogCardProps> = ({ title, imgSrc, onClick }) => {
   return (
     <article
-        className="relative w-[368px] h-[359px]"
+        className="relative w-full max-w-[600px] h-[359px] md:h-[585px]"
     >
         {/* Underlay */}
         <div

@@ -58,9 +58,24 @@ const ProductCard: React.FC<ProductCardProps> = ({
             </div>
             <div>
                 <Button
-                    className="w-full justify-between gap-1"
+                    className="md:hidden w-full flex justify-between gap-1"
                     variant="outline"
                     size="sm"
+                    onClick={onSeeProduct}
+                >
+                    مشاهده محصول
+                    <Image
+                        className="w-3 h-auto object-cover"
+                        src="/icons/add-bold.svg"
+                        alt="add icon"
+                        width={12}
+                        height={12}
+                    />
+                </Button>
+                <Button
+                    className="hidden md:flex w-full items-center justify-between gap-1"
+                    variant="outline"
+                    size="md"
                     onClick={onSeeProduct}
                 >
                     مشاهده محصول

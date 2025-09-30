@@ -47,7 +47,7 @@ const footerSections = [
 
 export const Footer = () => {
   return (
-    <footer className="flex flex-col">
+    <footer className="flex flex-col mt-24 md:mt-36 lg:mt-44">
         {/* Newsletter */}
         <div 
             className="w-full py-10 border-y border-gray-100"
@@ -109,10 +109,10 @@ export const Footer = () => {
                     {footerSections.map((section) => (
                         <div 
                             key={section.title} 
-                            className="flex flex-col gap-3"
+                            className="flex flex-col gap-4"
                         >
                             <h4 
-                                className="text-title-sm text-gray-500 text-nowrap mb-2"
+                                className="text-title-sm text-gray-500 text-nowrap mb-4"
                             >
                             {section.title}
                             </h4>

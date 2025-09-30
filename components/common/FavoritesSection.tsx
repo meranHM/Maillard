@@ -42,55 +42,67 @@ const FavoritesSection = () => {
 
     return (
         <section
-            className="w-full relative flex flex-col gap-6"
+            className="widthLimit relative flex flex-col gap-6 overflow-hidden mt-22 md:mt-28 lg:mt-34"
         >
             <div
-                className="flex flex-col items-start space-y-4"
+                className="w-full flex flex-col gap-6 md:flex-row"
             >
-                <Image
-                    className="mb-8"
-                    src="/logos/png-logo-3x.png"
-                    alt="Maillard logo"
-                    width={64}
-                    height={64}
-                />
-                <h2
-                    className="text-title-md"
-                >
-                    ترکیب‌های محبوب
-                </h2>
-                <p
-                    className="text-label-md text-gray-500a"
-                >
-                    انتخاب‌هایی ماندگار برای هدیه دادن یا لذت‌بردن روزمره؛ شامل ترکیب‌های منتخب از قهوه‌های آسیاب‌شده، دانه کامل و ابزارهای دم‌آوری برای تجربه‌ای کامل از قهوه.
-                </p>
-            </div>
-
-            {/* Product row */}
-            <div
-                className="w-full flex items-center gap-4.25 overflow-x-auto scroll-smooth no-scrollbar"
-                ref={scrollRef}
-                onScroll={updateThumb}
-                role="list"
-                aria-label="Best Products"                
-            >
-                {placeholderProducts.map((product) => (
-                    <CategoryCard 
-                        imgSrc={product.imgSrc}
-                        title={product.title}
-                        description={product.description}
-                        key={product.id}
-                    />
-                ))}
-            </div>
-
-            {/* Custom scrollbar track + thumb */}
-            <div className="relative h-0.5 bg-gray-150 mt-6">
+                {/* Header and Logo */}
                 <div
-                    className="absolute top-0 h-full bg-black transition-transform duration-75"
-                    style={{ width: `${thumbWidth}px`, transform: `translateX(${thumbPos}px)` }}
-                />
-            </div>            
+                    className="min-w-[380px] flex flex-col items-start space-y-4"
+                >
+                    <Image
+                        className="mb-8"
+                        src="/logos/png-logo-3x.png"
+                        alt="Maillard logo"
+                        width={64}
+                        height={64}
+                    />
+                    <h2
+                        className="text-title-md md:text-headline-sm"
+                    >
+                        ترکیب‌های محبوب
+                    </h2>
+                    <p
+                        className="text-label-md text-gray-500a w-full max-w-[292px]"
+                    >
+                        انتخاب‌هایی ماندگار برای هدیه دادن یا لذت‌بردن روزمره؛ شامل ترکیب‌های منتخب از قهوه‌های آسیاب‌شده، دانه کامل و ابزارهای دم‌آوری برای تجربه‌ای کامل از قهوه.
+                    </p>
+                </div>
+
+                {/* Scrollable area */}
+                <div
+                    className="w-full flex flex-col overflow-x-auto scroll-smooth no-scrollbar shrink-0"
+                    ref={scrollRef}
+                    onScroll={updateThumb}
+                >
+                    <div
+                        className="flex items-center gap-4.5"
+                        role="list"
+                        aria-label="Best Products"
+                    >
+                        {placeholderProducts.map((product) => (
+                            <CategoryCard
+                                imgSrc={product.imgSrc}
+                                title={product.title}
+                                description={product.description}
+                                key={product.id}
+                            />
+                        ))}
+                    </div>
+
+                    {/* Progress indicator (track + thumb) */}
+                    <div className="w-full relative h-0.5 bg-gray-150 mt-6 shrink-0">
+                        <div
+                            className="absolute top-0 h-full bg-black transition-transform duration-75"
+                            style={{
+                                width: `${thumbWidth}px`,
+                                transform: `translateX(${thumbPos}px)`,
+                            }}
+                        />
+                    </div>
+                </div>
+            </div>
         </section>
     )
 }
