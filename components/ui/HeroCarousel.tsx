@@ -25,7 +25,7 @@ const HeroCarousel = () => {
 
     return (
         <div
-            className="relative w-[185px] h-[260px] shadow-mobile-light lg:shadow-desktop-heavy"
+            className="relative w-full max-w-[262px] aspect-[185/260] shadow-mobile-light lg:shadow-desktop-heavy"
         >
             <motion.div
                 className="absolute inset-0 w-full h-full"
@@ -49,24 +49,27 @@ const HeroCarousel = () => {
             >
                 <AnimatePresence mode="wait">
                     <motion.div
-                        className="w-full h-full flex items-center justify-center"
+                        className="w-full h-full flex items-center justify-center relative"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
                         transition={{ duration: 0.6, ease: "easeInOut" }}
                     >
-                        <Image 
-                            className="p-2"
-                            src={slides[currentSlide].src}
-                            alt={slides[currentSlide].alt}
-                            width={130}
-                            height={90}
-                        />                        
+                        <div className="relative w-full aspect-[185/260]">
+                            <Image
+                                src={slides[currentSlide].src}
+                                alt={slides[currentSlide].alt}
+                                fill
+                                className="p-6 object-contain"
+                                priority
+                                sizes="(max-width: 768px) 185px,
+                                    (max-width: 1024px) 262px,
+                                    369px"
+                            />                       
+                        </div>
                     </motion.div>
                 </AnimatePresence>
             </div>
-
-
         </div>
   )
 }
