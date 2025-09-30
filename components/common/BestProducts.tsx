@@ -52,7 +52,9 @@ const BestProducts = () => {
   return (
     <div className="widthLimit relative">
       {/* Header */}
-      <div className="w-full flex items-center justify-between mb-4 md:hidden">
+      <div 
+        className="w-full flex items-center justify-between mb-4 md:hidden"
+      >
         <h3 className="text-title-md">برترین‌ها</h3>
 
         {/* Scroll buttons (mobile only) */}
