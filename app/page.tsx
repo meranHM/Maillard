@@ -8,7 +8,6 @@ import Hero from "@/components/common/Hero"
 import MottoSection from "@/components/common/MottoSection"
 
 export default function Home() {
-
   return (
     <>
       <div 

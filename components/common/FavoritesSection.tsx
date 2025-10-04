@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import { useRef, useState, useEffect } from "react"
+import { motion, useMotionValue, useSpring, useTransform } from "motion/react"
 import CategoryCard from "../products/CategoryCard"
 
 const placeholderProducts = [
@@ -15,30 +16,86 @@ const placeholderProducts = [
 
 
 const FavoritesSection = () => {
-    const [thumbWidth, setThumbWidth] = useState(0)
-    const [thumbPos, setThumbPos] = useState(0)
+    const scrollContainerRef = useRef<HTMLDivElement>(null)
+    const [scrollPercentage, setScrollPercentage] = useState(0)
+    const [isDragging, setIsDragging] = useState(false)
+    const [canScroll, setCanScroll] = useState(false)
 
-    const scrollRef = useRef<HTMLDivElement>(null)
+    const thumbX = useMotionValue(0)
+    const springConfig = { damping: 30, stiffness: 300 }
+    const thumbXSpring = useSpring(thumbX, springConfig)
 
-    /* updateing thumb size and position */
-    const updateThumb = () => {
-        if (!scrollRef.current) return
-        const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current
+    // Move useTransform to the top level - ALWAYS called, not conditionally
+    const thumbPosition = useTransform(thumbXSpring, (v) => {
+        if (!scrollContainerRef.current) return 0
+        const track = scrollContainerRef.current.parentElement?.querySelector("[data-scrollbar-track]")
+        if (!track) return 0
+        const trackWidth = track.getBoundingClientRect().width
+        const thumbWidth = 80
+        return v * (trackWidth - thumbWidth)
+    })
 
-        /* thumb width proportional to visible area */
-        const width = (clientWidth / scrollWidth) * clientWidth
-        setThumbWidth(width)
+    // Checking if content is scrollable
+    useEffect(() => {
+        const checkScrollable = () => {
+            if (scrollContainerRef.current) {
+                const { scrollWidth, clientWidth } = scrollContainerRef.current
+                setCanScroll(scrollWidth > clientWidth)
+            }
+        }
 
-        /* thumb position proportional to scroll */
-        const pos = (scrollLeft / (scrollWidth - clientWidth)) * (clientWidth - width)
-        setThumbPos(pos)
+        checkScrollable()
+        window.addEventListener('resize', checkScrollable)
+        return () => window.removeEventListener('resize', checkScrollable)
+    }, [])
+
+    // Updating scroll percentage on scroll
+    const handleScroll = () => {
+        if (!scrollContainerRef.current) return
+
+        const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current
+        const maxScroll = scrollWidth - clientWidth
+        const percentage = maxScroll > 0 ? scrollLeft / maxScroll : 0
+        
+        setScrollPercentage(percentage)
+        if (!isDragging) {
+            thumbX.set(percentage)
+        }
     }
 
-    useEffect(() => {
-        updateThumb()
-        window.addEventListener("resize", updateThumb)
-        return () => window.removeEventListener("resize", updateThumb)
-    }, [])
+    // Handling scrollbar track click
+    const handleTrackClick = (e: React.MouseEvent<HTMLDivElement>) => {
+        if (!scrollContainerRef.current || e.target !== e.currentTarget) return
+
+        const track = e.currentTarget
+        const rect = track.getBoundingClientRect()
+        const clickX = e.clientX - rect.left
+        const percentage = clickX / rect.width
+
+        const { scrollWidth, clientWidth } = scrollContainerRef.current
+        const maxScroll = scrollWidth - clientWidth
+        scrollContainerRef.current.scrollLeft = percentage * maxScroll
+    }
+
+    // Handling thumb drag
+    const handleThumbDrag = (e: MouseEvent | TouchEvent | PointerEvent, info: any) => {
+        if (!scrollContainerRef.current) return
+
+        const track = scrollContainerRef.current.parentElement?.querySelector('[data-scrollbar-track]')
+        if (!track) return
+
+        const trackRect = track.getBoundingClientRect()
+        const { scrollWidth, clientWidth } = scrollContainerRef.current
+        const maxScroll = scrollWidth - clientWidth
+
+        // Calculating percentage based on drag position
+        const dragX = 'clientX' in info.point ? info.point.x : info.point.x
+        const relativeX = Math.max(0, Math.min(dragX - trackRect.left, trackRect.width))
+        const percentage = relativeX / trackRect.width
+
+        scrollContainerRef.current.scrollLeft = percentage * maxScroll
+        thumbX.set(percentage)
+    }  
 
     return (
         <section
@@ -49,7 +106,7 @@ const FavoritesSection = () => {
             >
                 {/* Header and Logo */}
                 <div
-                    className="min-w-[380px] flex flex-col items-start space-y-4"
+                    className="w-full md:min-w-[380px] flex flex-col items-start space-y-4"
                 >
                     <Image
                         className="mb-8"
@@ -70,37 +127,64 @@ const FavoritesSection = () => {
                     </p>
                 </div>
 
-                {/* Scrollable area */}
+                {/* Scrollable area with custom scrollbar */}
                 <div
-                    className="w-full flex flex-col overflow-x-auto scroll-smooth no-scrollbar shrink-0"
-                    ref={scrollRef}
-                    onScroll={updateThumb}
+                    className="flex flex-col gap-4 flex-1"
                 >
+                    {/* Scrollbar container */}
                     <div
-                        className="flex items-center gap-4.5"
-                        role="list"
-                        aria-label="Best Products"
+                        className="overflow-x-auto overflow-y-hidden scrollbar-hide"
+                        ref={scrollContainerRef}
+                        onScroll={handleScroll}
+                        style={{ 
+                            scrollbarWidth: "none",
+                            msOverflowStyle: "none",
+                         }}
                     >
-                        {placeholderProducts.map((product) => (
-                            <CategoryCard
-                                imgSrc={product.imgSrc}
-                                title={product.title}
-                                description={product.description}
-                                key={product.id}
-                            />
-                        ))}
+                        <div
+                            className="flex gap-4.25"
+                            role="list"
+                            aria-label="Best Products"
+                        >
+                            {placeholderProducts.map((product) => (
+                                <div
+                                    className="flex-shrink-0"
+                                    key={product.id}
+                                >
+                                    <CategoryCard
+                                        imgSrc={product.imgSrc}
+                                        title={product.title}
+                                        description={product.description}
+                                    />
+                                </div>
+                            ))}
+                        </div>
                     </div>
 
-                    {/* Progress indicator (track + thumb) */}
-                    <div className="w-full relative h-0.5 bg-gray-150 mt-6 shrink-0">
+                    {/* Custom Scrollbar */}
+                    {canScroll && (
                         <div
-                            className="absolute top-0 h-full bg-black transition-transform duration-75"
-                            style={{
-                                width: `${thumbWidth}px`,
-                                transform: `translateX(${thumbPos}px)`,
-                            }}
-                        />
-                    </div>
+                            className="relative h-0.5 bg-gray-150 rounded-full cursor-pointer group"
+                            data-scrollbar-track
+                            onClick={handleTrackClick}
+                        >
+                            <motion.div
+                                className="absolute top-0 h-0.5 w-20 bg-black rounded-full cursor-grab active:cursor-grabbing group-hover:bg-gray-900 transition-colors"
+                                drag="x"
+                                dragConstraints={{ left: 0, right: 0 }}
+                                dragElastic={0}
+                                dragMomentum={false}
+                                onDragStart={() => setIsDragging(true)}
+                                onDragEnd={() => setIsDragging(false)}
+                                onDrag={handleThumbDrag}
+                                style={{
+                                    x: thumbPosition
+                                }}
+                                whileHover={{ scaleY: 1.5 }}
+                                whileTap={{ scaleY: 1.5 }}
+                            />
+                        </div>
+                    )}
                 </div>
             </div>
         </section>
