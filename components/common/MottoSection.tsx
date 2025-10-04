@@ -32,7 +32,7 @@ const MottoSection = () => {
 
         {/* Mobile View Button */}
         <Button
-          className="md:hidden"
+          className="md:hidden mb-6"
           variant="outline"
           size="sm"
         >
@@ -40,7 +40,7 @@ const MottoSection = () => {
             <ArrowLeftIcon className="w-6 h-6"/>
         </Button>
 
-        {/* Mobile View Button */}
+        {/* Desktop View Button */}
         <Button
           className="hidden md:block"
           variant="outline"
