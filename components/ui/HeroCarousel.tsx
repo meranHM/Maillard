@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import { AnimatePresence, motion } from "motion/react"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { useUiStore } from "@/store/uiStore"
 
 export const slides = [
@@ -13,7 +13,7 @@ export const slides = [
 
 
 const HeroCarousel = () => {
-    const { currentSlide, angle, nextSlide, goToSlide } = useUiStore()
+    const { currentSlide, angle, nextSlide } = useUiStore()
 
     useEffect(() => {
         const interval = setInterval(() => {
