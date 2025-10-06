@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 import { ChevronRight, Home } from "lucide-react"
 import Link from "next/link"
@@ -93,7 +93,7 @@ export const BreadCrumbs = ({
                     className="flex items-center gap-1.5 text-gray-600 hover:text-gray-900 transition-colors"
                   >
                     {isFirst && <Home className="h-4 w-4" aria-hidden="true" />}
-                    <span>{isFirst ? '' : item.label}</span>
+                    <span>{isFirst ? "" : item.label}</span>
                   </Link>
                 )}
               </li>

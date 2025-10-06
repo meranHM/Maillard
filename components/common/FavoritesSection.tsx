@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import { useRef, useState, useEffect } from "react"
-import { motion, useMotionValue, useSpring, useTransform } from "motion/react"
+import { motion, useMotionValue, useSpring, useTransform, PanInfo } from "motion/react"
 import CategoryCard from "../products/CategoryCard"
 
 const placeholderProducts = [
@@ -45,8 +45,8 @@ const FavoritesSection = () => {
         }
 
         checkScrollable()
-        window.addEventListener('resize', checkScrollable)
-        return () => window.removeEventListener('resize', checkScrollable)
+        window.addEventListener("resize", checkScrollable)
+        return () => window.removeEventListener("resize", checkScrollable)
     }, [])
 
     // Updating scroll percentage on scroll
@@ -78,10 +78,10 @@ const FavoritesSection = () => {
     }
 
     // Handling thumb drag
-    const handleThumbDrag = (e: MouseEvent | TouchEvent | PointerEvent, info: any) => {
+    const handleThumbDrag = (e: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
         if (!scrollContainerRef.current) return
 
-        const track = scrollContainerRef.current.parentElement?.querySelector('[data-scrollbar-track]')
+        const track = scrollContainerRef.current.parentElement?.querySelector("[data-scrollbar-track]")
         if (!track) return
 
         const trackRect = track.getBoundingClientRect()
@@ -89,7 +89,7 @@ const FavoritesSection = () => {
         const maxScroll = scrollWidth - clientWidth
 
         // Calculating percentage based on drag position
-        const dragX = 'clientX' in info.point ? info.point.x : info.point.x
+        const dragX = "clientX" in info.point ? info.point.x : info.point.x
         const relativeX = Math.max(0, Math.min(dragX - trackRect.left, trackRect.width))
         const percentage = relativeX / trackRect.width
 

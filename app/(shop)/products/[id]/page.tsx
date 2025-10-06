@@ -3,7 +3,6 @@
 import { useParams } from "next/navigation"
 import { BreadCrumbs } from "@/components/common/BreadCrumbs"
 import Container from "@/components/ui/Container"
-import ProductCarousel from "@/components/products/ProductCarousel"
 import ProductDetails from "@/components/products/ProductDetails"
 import ProductAfterTaste from "@/components/products/ProductAfterTaste"
 import ProductExpertReview from "@/components/products/ProductExpertReview"
