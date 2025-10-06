@@ -26,11 +26,13 @@ export const Badge = ({
     className,
     ...props
 }: BadgeProps) => {
-
-
     return (
         <span
-            className={`${getBadgeClasses(size, variant, state)} rounded-5xl text-nowrap`}
+            className={clsx(
+                getBadgeClasses(size, variant, state),
+                "rounded-5xl text-nowrap",
+                className
+            )}
             {...props}
         >
             {children}

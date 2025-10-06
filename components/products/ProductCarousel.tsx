@@ -6,7 +6,7 @@ import { ChevronRightIcon } from "../icons/ChevronRightIcon"
 
 
 interface ProductCarouselProps {
-    images: Array<{ id: number; src: string; alt: string }>
+    images: string[]
 }
 
 const ProductCarousel: React.FC<ProductCarouselProps> = ({ images }) => {
@@ -77,8 +77,8 @@ const ProductCarousel: React.FC<ProductCarouselProps> = ({ images }) => {
                         className="absolute inset-0"
                     >
                         <Image 
-                            src={images[currentSlide].src}
-                            alt={images[currentSlide].alt}
+                            src={images[currentSlide]}
+                            alt={images[currentSlide]}
                             fill
                             className="object-contain"
                             sizes="(max-width: 768px) 368px, 665px"

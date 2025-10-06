@@ -11,7 +11,7 @@ const Container: React.FC<ContainerProps> = ({
   return (
     <div
         className={cn(
-            "widthLimit flex flex-col items-center justify-center gap-10 px-6.75 py-4.75 mt-6.25",
+            "widthLimit flex flex-col items-center justify-center gap-10 px-5 md:px-6 py-5 mt-6",
             className
         )}
         {...props}

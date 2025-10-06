@@ -1,14 +1,14 @@
 "use client"
 
-import { motion, AnimatePresence } from "motion/react"
-import { Heart, Share2, ShoppingCart, Star, Check, Truck, Shield, RotateCcw, ChevronLeft, ChevronRight } from "lucide-react"
 import { useParams } from "next/navigation"
 import { BreadCrumbs } from "@/components/common/BreadCrumbs"
-import { useState } from "react"
-import { Button } from "@/components/ui/Button"
 import Container from "@/components/ui/Container"
 import ProductCarousel from "@/components/products/ProductCarousel"
 import ProductDetails from "@/components/products/ProductDetails"
+import ProductAfterTaste from "@/components/products/ProductAfterTaste"
+import ProductExpertReview from "@/components/products/ProductExpertReview"
+import MottoSection from "@/components/common/MottoSection"
+import SimilarProducts from "@/components/products/SimilarProducts"
 
 // Placeholder data - will Replace with real data later
 const PLACEHOLDER_PRODUCT = {
@@ -43,22 +43,10 @@ const PLACEHOLDER_PRODUCT = {
   inStock: true,
 }
 
-export const slides = [
-  { id: 0, src: "/images/png-product-placeholder2-3x.png", alt: "Slide 1" },
-  { id: 1, src: "/images/png-product-placeholder2-3x.png", alt: "Slide 2" },
-  { id: 2, src: "/images/png-product-placeholder2-3x.png", alt: "Slide 3" },
-]
 
 export default function ProductDetailsPage() {
   const params = useParams()
   const productId = params.id as string
-  
-  // State management
-  const [selectedImage, setSelectedImage] = useState(0)
-  const [selectedColor, setSelectedColor] = useState(0)
-  const [quantity, setQuantity] = useState(1)
-  const [isFavorite, setIsFavorite] = useState(false)
-  const [activeTab, setActiveTab] = useState<"description" | "specifications">("description")
 
   const product = PLACEHOLDER_PRODUCT
 
@@ -72,12 +60,8 @@ export default function ProductDetailsPage() {
       <BreadCrumbs customItems={breadcrumbItems} className="mb-6 hidden md:block" />
       
       <div
-        className="w-full flex flex-col gap-6"
+        className="w-full flex flex-col space-y-20"
       >
-        <ProductCarousel 
-          images={slides}
-        />
-
         <ProductDetails
           id={product.id}
           title={product.name}
@@ -85,11 +69,20 @@ export default function ProductDetailsPage() {
           features={product.features}
           specifications={product.specifications}
           sizes={product.sizes}
+          images={product.images}
           price={product.price}
           flavor={product.flavor}
           grind={product.grind}
           inStock={product.inStock}
         />
+
+        <ProductAfterTaste />
+
+        <ProductExpertReview />
+
+        <MottoSection />
+
+        <SimilarProducts />
       </div>
     </Container>
   )
