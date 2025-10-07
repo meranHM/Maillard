@@ -53,9 +53,9 @@ const SimilarProducts = () => {
     <div className="widthLimit relative">
       {/* Header */}
       <div 
-        className="w-full flex items-center justify-between mb-4 md:hidden"
+        className="w-full flex items-center justify-between mb-4"
       >
-        <h3 className="text-title-md">محصولات مشابه</h3>
+        <h3 className="text-title-md md:text-title-lg lg:text-headline-sm pb-2">محصولات مشابه</h3>
 
         {/* Scroll buttons (mobile only) */}
         <div className="flex items-center gap-2 md:hidden">

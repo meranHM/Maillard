@@ -1,6 +1,6 @@
 "use client"
 
-import { ChevronRight, Home } from "lucide-react"
+import { ChevronLeft } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Fragment, useMemo } from "react"
@@ -21,7 +21,7 @@ interface BreadcrumbsProps {
 export const BreadCrumbs = ({
   customItems,
   className = "",
-  homeLabel = "Home",
+  homeLabel = "خانه",
   separator,
   maxItems,
 }: BreadcrumbsProps) => {
@@ -64,12 +64,12 @@ export const BreadCrumbs = ({
   }, [breadcrumbs, maxItems])
 
   const defaultSeparator = (
-    <ChevronRight className="h-4 w-4 text-gray-400" aria-hidden="true" />
+    <ChevronLeft className="h-6 w-6 text-gray-150" aria-hidden="true" />
   )
 
   return (
     <nav
-      className={`flex items-center space-x-2 text-sm ${className}`}
+      className={`w-full flex items-center space-x-2 text-sm ${className}`}
       aria-label="BreadCrumb"
     >
       <ol className="flex items-center space-x-2">
@@ -82,7 +82,7 @@ export const BreadCrumbs = ({
               <li className="flex items-center">
                 {isLast ? (
                   <span
-                    className="font-medium text-gray-900"
+                    className="text-label-lg text-gray-300a"
                     aria-current="page"
                   >
                     {item.label}
@@ -92,8 +92,7 @@ export const BreadCrumbs = ({
                     href={item.href}
                     className="flex items-center gap-1.5 text-gray-600 hover:text-gray-900 transition-colors"
                   >
-                    {isFirst && <Home className="h-4 w-4" aria-hidden="true" />}
-                    <span>{isFirst ? "" : item.label}</span>
+                    <span>{isFirst ? "خانه" : item.label}</span>
                   </Link>
                 )}
               </li>

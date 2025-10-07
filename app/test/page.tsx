@@ -1,8 +1,8 @@
-import { Button } from "@/components/ui/Button"
-import { FABButton } from "@/components/ui/FABButton"
-import CategoryCard from "@/components/products/CategoryCard"
-import React from "react"
-import ProductCard from "@/components/products/ProductCard"
+import { Button } from '@/components/ui/Button'
+import { FABButton } from '@/components/ui/FABButton'
+import CategoryCard from '@/components/products/CategoryCard'
+import React from 'react'
+import ProductCard from '@/components/products/ProductCard'
 
 const page = () => {
   return (
@@ -112,7 +112,7 @@ const page = () => {
                 </Button>
             </div>
 
-            <h3 className="font-semibold text-center mt-6">Medium</h3>
+            <h3 className='font-semibold text-center mt-6'>Medium</h3>
             {/* Medium */}
             <div
                 className="grid grid-cols-3 gap-6 place-items-center"
@@ -210,7 +210,7 @@ const page = () => {
                 </Button>
             </div>
 
-            <h3 className="font-semibold text-center mt-6">Large</h3>
+            <h3 className='font-semibold text-center mt-6'>Large</h3>
             {/* Large */}
             <div
                 className="grid grid-cols-3 gap-6 place-items-center"
@@ -305,7 +305,7 @@ const page = () => {
                 </Button>
             </div>
 
-            <h3 className="font-semibold text-center mt-6">FAB Small</h3>
+            <h3 className='font-semibold text-center mt-6'>FAB Small</h3>
             <div
                 className="flex items-center justify-between"
             >
@@ -330,7 +330,7 @@ const page = () => {
                 </FABButton>
             </div>
 
-            <h3 className="font-semibold text-center mt-6">FAB Medium</h3>
+            <h3 className='font-semibold text-center mt-6'>FAB Medium</h3>
             <div
                 className="flex items-center justify-between"
             >
@@ -355,7 +355,7 @@ const page = () => {
                 </FABButton>
             </div>
 
-            <h3 className="font-semibold text-center mt-6">FAB Large</h3>
+            <h3 className='font-semibold text-center mt-6'>FAB Large</h3>
             <div
                 className="flex items-center justify-between"
             >
@@ -383,7 +383,7 @@ const page = () => {
 
         {/* Category Cards */}
         <div
-            className="grid grid-cols-[repeat(auto-fit,minmax(176px,1fr))] gap-6"
+            className='grid grid-cols-[repeat(auto-fit,minmax(176px,1fr))] gap-6'
         >
             <CategoryCard 
                 imgSrc="/images/png-product-placeholder-3x.png"
@@ -412,7 +412,7 @@ const page = () => {
 
         {/* Product Cards */}
         <div
-            className="w-full px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 place-items-center"
+            className='w-full px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 place-items-center'
         >
             <ProductCard 
                 imgSrc="/images/png-product-placeholder-3x.png"

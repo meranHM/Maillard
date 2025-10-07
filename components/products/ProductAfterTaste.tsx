@@ -2,6 +2,7 @@ import Container from "../ui/Container"
 import Image from "next/image"
 import { Badge } from "../ui/Badge"
 import InfoCircleIcon from "../icons/InfoCircleIcon"
+import Link from "next/link"
 
 const ProductAfterTaste = () => {
   return (
@@ -13,7 +14,7 @@ const ProductAfterTaste = () => {
             className="absolute inset-0 z-0 pointer-events-none"
         >
             <Image
-                className="object-cover object-[calc(100%-140px)_center]"
+                className="object-contain object-[calc(100%-600px)_center]"
                 src="/images/motto-section-image.png"
                 alt="Background image"
                 fill
@@ -25,7 +26,7 @@ const ProductAfterTaste = () => {
             className="absolute inset-0 h-full z-10 flex flex-col items-start justify-between pr-7 pt-11 pb-7"
         >
             <h3
-                className="text-title-lg text-black text-start"
+                className="text-title-lg md:text-headline-sm text-black text-start"
             >
                 طعم یاد‌ها
             </h3>
@@ -34,7 +35,7 @@ const ProductAfterTaste = () => {
                 className="flex flex-col gap-2"
             >
                 <p
-                    className="text-label-lg text-start pb-4"
+                    className="text-label-lg md:text-title-md text-start pb-4"
                 >
                     طعم ملایم و متعادل با نت‌های شکلات و مرکبات<br />
                     گزینه ای مناسب برای شروع روز با انرژی
@@ -61,12 +62,13 @@ const ProductAfterTaste = () => {
                         آجیلی
                     </Badge>
                 </div>
-                <p
-                    className="text-label-md text-gray-600 text-nowrap flex items-center gap-2 mt-8"
+                <Link
+                    className="text-label-md md:text-title-sm text-gray-600 hover:text-gray-800a transition-colors text-nowrap flex items-center gap-2 mt-8"
+                    href="/"
                 >
                     <InfoCircleIcon className="w-6 h-6" />
                     درباره طعم یادها بیشتر بدانید
-                </p>
+                </Link>
             </div>
         </div>
     </Container>

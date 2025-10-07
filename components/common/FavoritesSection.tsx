@@ -45,8 +45,8 @@ const FavoritesSection = () => {
         }
 
         checkScrollable()
-        window.addEventListener("resize", checkScrollable)
-        return () => window.removeEventListener("resize", checkScrollable)
+        window.addEventListener('resize', checkScrollable)
+        return () => window.removeEventListener('resize', checkScrollable)
     }, [])
 
     // Updating scroll percentage on scroll
@@ -81,7 +81,7 @@ const FavoritesSection = () => {
     const handleThumbDrag = (e: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
         if (!scrollContainerRef.current) return
 
-        const track = scrollContainerRef.current.parentElement?.querySelector("[data-scrollbar-track]")
+        const track = scrollContainerRef.current.parentElement?.querySelector('[data-scrollbar-track]')
         if (!track) return
 
         const trackRect = track.getBoundingClientRect()
@@ -89,7 +89,7 @@ const FavoritesSection = () => {
         const maxScroll = scrollWidth - clientWidth
 
         // Calculating percentage based on drag position
-        const dragX = "clientX" in info.point ? info.point.x : info.point.x
+        const dragX = 'clientX' in info.point ? info.point.x : info.point.x
         const relativeX = Math.max(0, Math.min(dragX - trackRect.left, trackRect.width))
         const percentage = relativeX / trackRect.width
 
