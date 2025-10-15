@@ -3,7 +3,7 @@
 import Image from "next/image"
 import { useRef, useState, useEffect } from "react"
 import { motion, useMotionValue, useSpring, useTransform, PanInfo } from "motion/react"
-import CategoryCard from "../products/CategoryCard"
+import CategoryCard from "../categories/CategoryCard"
 
 const placeholderProducts = [
     { id: 0, imgSrc: "/images/png-product-placeholder-3x.png", title: "قهوه آسیاب‌شده بلوند مایارد", description: "طعم ملایم و متعادل با نت‌های شکلات و مرکبات گزینه ای مناسب برای شروع روز با انرژی" },

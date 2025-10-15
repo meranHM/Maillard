@@ -3,6 +3,7 @@ import "@/styles/globals.css"
 import locaLFont from "next/font/local"
 import { Header } from "@/components/layout/Header"
 import { Footer } from "@/components/layout/Footer"
+import { QueryProvider } from "@/providers/QueryProvider"
 
 const parastoo = locaLFont({
   src: [
@@ -46,9 +47,11 @@ export default function RootLayout({
       <body
         className={`${parastoo.variable} antialiased bg-white`}
       >
-        <Header />
-        {children}
-        <Footer />
+        <QueryProvider>
+          <Header />
+          {children}
+          <Footer />
+        </QueryProvider>
       </body>
     </html>
   )

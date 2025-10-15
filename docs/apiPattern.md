@@ -1,0 +1,1 @@
+Frontend Components → Tanstack Query Hooks → API Client Functions → Next.js API Routes → Backend

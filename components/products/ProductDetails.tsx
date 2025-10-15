@@ -164,7 +164,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({
                         className="md:hidden"
                         variant="outline"
                     >
-                    + &nbsp 1 &nbsp -
+                    + &nbsp; 1 &nbsp; -
                     </Button>
                     {/* Desktop View */}
                     <Button
@@ -180,7 +180,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({
                         variant="outline"
                         size="lg"
                     >
-                    + &nbsp 1 &nbsp -
+                    + &nbsp; 1 &nbsp; -
                     </Button>
                 </div>
 

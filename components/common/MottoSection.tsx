@@ -1,11 +1,10 @@
 import Image from "next/image"
-import Container from "../ui/Container"
 import { Button } from "../ui/Button"
 import { ArrowLeftIcon } from "../icons/ArrowLeftIcon"
 
 const MottoSection = () => {
   return (
-    <Container
+    <div
       className="relative w-full max-w-7xl h-[500px] bg-gradient-to-b from-[#FAFAFA] via-[#FFFFFF00] to-[#F0F0F0]"
     >
       {/* Underlay */}
@@ -49,7 +48,7 @@ const MottoSection = () => {
             بیشتر بدانید
         </Button>
       </div>
-    </Container>
+    </div>
   )
 }
 

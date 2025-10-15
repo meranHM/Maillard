@@ -1,4 +1,3 @@
-import Container from "../ui/Container"
 import Image from "next/image"
 import { Badge } from "../ui/Badge"
 import InfoCircleIcon from "../icons/InfoCircleIcon"
@@ -6,7 +5,7 @@ import Link from "next/link"
 
 const ProductAfterTaste = () => {
   return (
-    <Container
+    <div
         className="relative h-[500px] bg-gradient-to-b from-[#FAFAFA] to-[#F0F0F0]"
     >
         {/* Underlay */}
@@ -71,7 +70,7 @@ const ProductAfterTaste = () => {
                 </Link>
             </div>
         </div>
-    </Container>
+    </div>
   )
 }
 

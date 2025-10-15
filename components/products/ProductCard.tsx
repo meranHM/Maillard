@@ -1,4 +1,4 @@
-import Card from "./Card"
+import Card from "../common/Card"
 import { Button } from "../ui/Button"
 import Image from "next/image"
 
