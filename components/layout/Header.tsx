@@ -78,7 +78,7 @@ const NavLinks = () => (
   >
     {navLinks.map((link) => (
       <Link
-        className="hover:shadow-sm transition-shadow"
+        className="hover:bg-accent p-1 rounded"
         key={link.href}
         href={link.href}
       >

@@ -138,8 +138,8 @@ export const Footer = () => {
                     </a>
                 ))}
             </div>
-            <div className="flex items-center gap-6">
-            <p className="text-label-md text-gray-400">© 2025 Maillard</p>
+            <div className="flex items-center gap-6 md:gap-22.5">
+            <p className="text-label-md text-gray-400 pt-1">© 2025 Maillard</p>
             <Image src="/logos/png-logotype-3x.png" alt="Maillard Logo Type" width={100} height={22} />
             </div>
         </div>

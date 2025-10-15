@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/Button'
 import { FABButton } from '@/components/ui/FABButton'
-import CategoryCard from '@/components/products/CategoryCard'
+import CategoryCard from '@/components/categories/CategoryCard'
 import React from 'react'
 import ProductCard from '@/components/products/ProductCard'
 
