@@ -22,7 +22,6 @@ const PLACEHOLDER_PRODUCTS = [
 ]
 
 
-
 const CategoryDetailsPage = () => {
     /* const params = useParams()
     const productId = params.id as string */

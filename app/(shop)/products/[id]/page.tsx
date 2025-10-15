@@ -7,7 +7,7 @@ import ProductDetails from "@/components/products/ProductDetails"
 import ProductAfterTaste from "@/components/products/ProductAfterTaste"
 import ProductExpertReview from "@/components/products/ProductExpertReview"
 import MottoSection from "@/components/common/MottoSection"
-import SimilarProducts from "@/components/products/SimilarProducts"
+import ProductSimilar from "@/components/products/ProductSimilar"
 
 // Placeholder data - will replace with real data later
 const PLACEHOLDER_PRODUCT = {
@@ -49,7 +49,7 @@ const PLACEHOLDER_PRODUCT = {
 
 
 
-export default function ProductDetailsPage() {
+const  ProductDetailsPage = () => {
   const params = useParams()
   const productId = params.id as string
 
@@ -92,8 +92,10 @@ export default function ProductDetailsPage() {
           <MottoSection />
         </div>
 
-        <SimilarProducts />
+        <ProductSimilar />
       </div>
     </Container>
   )
 }
+
+export default ProductDetailsPage

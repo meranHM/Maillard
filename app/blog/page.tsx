@@ -2,13 +2,11 @@
 
 import { useState } from "react"
 import { useBlogs, usePrefetchBlogPost } from "@/hooks/useBlog"
-import Link from "next/link"
-import Image from "next/image"
 import BlogHeroCard from "@/components/blog/BlogHeroCard"
 import Container from "@/components/ui/Container"
 import BlogGrid from "@/components/blog/BlogGrid"
 
-export default function BlogPage() {
+const BlogPage = () => {
   const [page, setPage] = useState(1)
   const [selectedCategory, setSelectedCategory] = useState<string>()
   const [searchQuery, setSearchQuery] = useState("")
@@ -52,3 +50,5 @@ export default function BlogPage() {
     </Container>
   )
 }
+
+export default BlogPage

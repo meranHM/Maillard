@@ -1,7 +1,7 @@
 "use client"
 
 import { useRef, useState, useEffect } from "react"
-import ProductCard from "../products/ProductCard"
+import ProductCard from "./ProductCard"
 import { ChevronLeftIcon } from "../icons/ChevronLeftIcon"
 import { ChevronRightIcon } from "../icons/ChevronRightIcon"
 
@@ -14,7 +14,7 @@ const placeholderProducts = [
   { id: 5, imgSrc: "/images/png-product-placeholder-3x.png", title: "کلمبیا ارموسو پینک هیدرو", price: "855000" },
 ]
 
-const SimilarProducts = () => {
+const ProductSimilar = () => {
   const scrollRef = useRef<HTMLDivElement>(null)
   const cardRef = useRef<HTMLDivElement>(null)
 
@@ -127,4 +127,4 @@ const SimilarProducts = () => {
   )
 }
 
-export default SimilarProducts
+export default ProductSimilar

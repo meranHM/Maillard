@@ -14,7 +14,7 @@ interface BlogPostPageProps {
   params: Promise<{ slug: string }>
 }
 
-export default function BlogPostPage({ params }: BlogPostPageProps) {
+const BlogPostPage = ({ params }: BlogPostPageProps) => {
   const { slug } = use(params)
   const { data: post, isLoading, error } = useBlogPost(slug)
   const { data: allPosts } = useBlogs() // Fetching all posts for related posts section
@@ -214,3 +214,5 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
     </>
   )
 }
+
+export default BlogPostPage

@@ -7,7 +7,7 @@ import FloatingMenu from "@/components/common/FloatingMenu"
 import Hero from "@/components/common/Hero"
 import MottoSection from "@/components/common/MottoSection"
 
-export default function Home() {
+const Home = () => {
   return (
     <>
       <div 
@@ -28,3 +28,5 @@ export default function Home() {
     </>
   )
 }
+
+export default Home
