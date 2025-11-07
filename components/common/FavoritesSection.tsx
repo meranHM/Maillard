@@ -4,14 +4,15 @@ import Image from "next/image"
 import { useRef, useState, useEffect } from "react"
 import { motion, useMotionValue, useSpring, useTransform, PanInfo } from "motion/react"
 import CategoryCard from "../categories/CategoryCard"
+import { useRouter } from "next/navigation"
 
 const placeholderProducts = [
-    { id: 0, imgSrc: "/images/png-product-placeholder-3x.png", title: "قهوه آسیاب‌شده بلوند مایارد", description: "طعم ملایم و متعادل با نت‌های شکلات و مرکبات گزینه ای مناسب برای شروع روز با انرژی" },
-    { id: 1, imgSrc: "/images/png-product-placeholder-3x.png", title: "قهوه آسیاب‌شده بلوند مایارد", description: "طعم ملایم و متعادل با نت‌های شکلات و مرکبات گزینه ای مناسب برای شروع روز با انرژی" },
-    { id: 2, imgSrc: "/images/png-product-placeholder-3x.png", title: "قهوه آسیاب‌شده بلوند مایارد", description: "طعم ملایم و متعادل با نت‌های شکلات و مرکبات گزینه ای مناسب برای شروع روز با انرژی" },
-    { id: 3, imgSrc: "/images/png-product-placeholder-3x.png", title: "قهوه آسیاب‌شده بلوند مایارد", description: "طعم ملایم و متعادل با نت‌های شکلات و مرکبات گزینه ای مناسب برای شروع روز با انرژی" },
-    { id: 4, imgSrc: "/images/png-product-placeholder-3x.png", title: "قهوه آسیاب‌شده بلوند مایارد", description: "طعم ملایم و متعادل با نت‌های شکلات و مرکبات گزینه ای مناسب برای شروع روز با انرژی" },
-    { id: 5, imgSrc: "/images/png-product-placeholder-3x.png", title: "قهوه آسیاب‌شده بلوند مایارد", description: "طعم ملایم و متعادل با نت‌های شکلات و مرکبات گزینه ای مناسب برای شروع روز با انرژی" },
+    { id: "0", imgSrc: "/images/png-product-placeholder-3x.png", title: "قهوه آسیاب‌شده بلوند مایارد", description: "طعم ملایم و متعادل با نت‌های شکلات و مرکبات گزینه ای مناسب برای شروع روز با انرژی" },
+    { id: "1", imgSrc: "/images/png-product-placeholder-3x.png", title: "قهوه آسیاب‌شده بلوند مایارد", description: "طعم ملایم و متعادل با نت‌های شکلات و مرکبات گزینه ای مناسب برای شروع روز با انرژی" },
+    { id: "2", imgSrc: "/images/png-product-placeholder-3x.png", title: "قهوه آسیاب‌شده بلوند مایارد", description: "طعم ملایم و متعادل با نت‌های شکلات و مرکبات گزینه ای مناسب برای شروع روز با انرژی" },
+    { id: "3", imgSrc: "/images/png-product-placeholder-3x.png", title: "قهوه آسیاب‌شده بلوند مایارد", description: "طعم ملایم و متعادل با نت‌های شکلات و مرکبات گزینه ای مناسب برای شروع روز با انرژی" },
+    { id: "4", imgSrc: "/images/png-product-placeholder-3x.png", title: "قهوه آسیاب‌شده بلوند مایارد", description: "طعم ملایم و متعادل با نت‌های شکلات و مرکبات گزینه ای مناسب برای شروع روز با انرژی" },
+    { id: "5", imgSrc: "/images/png-product-placeholder-3x.png", title: "قهوه آسیاب‌شده بلوند مایارد", description: "طعم ملایم و متعادل با نت‌های شکلات و مرکبات گزینه ای مناسب برای شروع روز با انرژی" },
 ]
 
 
@@ -20,6 +21,8 @@ const FavoritesSection = () => {
     const [scrollPercentage, setScrollPercentage] = useState(0)
     const [isDragging, setIsDragging] = useState(false)
     const [canScroll, setCanScroll] = useState(false)
+
+    const router = useRouter()
 
     const thumbX = useMotionValue(0)
     const springConfig = { damping: 30, stiffness: 300 }
@@ -95,7 +98,11 @@ const FavoritesSection = () => {
 
         scrollContainerRef.current.scrollLeft = percentage * maxScroll
         thumbX.set(percentage)
-    }  
+    }
+
+    const handleRedirect = (productId: string) => {
+        router.push(`/categories/${productId}`)
+    }
 
     return (
         <section
@@ -155,6 +162,7 @@ const FavoritesSection = () => {
                                         imgSrc={product.imgSrc}
                                         title={product.title}
                                         description={product.description}
+                                        onClick={() => handleRedirect(product.id)}
                                     />
                                 </div>
                             ))}

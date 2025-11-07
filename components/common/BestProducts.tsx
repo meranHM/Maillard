@@ -4,19 +4,21 @@ import { useRef, useState, useEffect } from "react"
 import ProductCard from "../products/ProductCard"
 import { ChevronLeftIcon } from "../icons/ChevronLeftIcon"
 import { ChevronRightIcon } from "../icons/ChevronRightIcon"
+import { useRouter } from "next/navigation"
 
 const placeholderProducts = [
-  { id: 0, imgSrc: "/images/png-product-placeholder-3x.png", title: "کلمبیا ارموسو پینک هیدرو", price: "855000" },
-  { id: 1, imgSrc: "/images/png-product-placeholder-3x.png", title: "کلمبیا ارموسو پینک هیدرو", price: "855000" },
-  { id: 2, imgSrc: "/images/png-product-placeholder-3x.png", title: "کلمبیا ارموسو پینک هیدرو", price: "855000" },
-  { id: 3, imgSrc: "/images/png-product-placeholder-3x.png", title: "کلمبیا ارموسو پینک هیدرو", price: "855000" },
-  { id: 4, imgSrc: "/images/png-product-placeholder-3x.png", title: "کلمبیا ارموسو پینک هیدرو", price: "855000" },
-  { id: 5, imgSrc: "/images/png-product-placeholder-3x.png", title: "کلمبیا ارموسو پینک هیدرو", price: "855000" },
+  { id: "0", imgSrc: "/images/png-product-placeholder-3x.png", title: "کلمبیا ارموسو پینک هیدرو", price: "855000" },
+  { id: "1", imgSrc: "/images/png-product-placeholder-3x.png", title: "کلمبیا ارموسو پینک هیدرو", price: "855000" },
+  { id: "2", imgSrc: "/images/png-product-placeholder-3x.png", title: "کلمبیا ارموسو پینک هیدرو", price: "855000" },
+  { id: "3", imgSrc: "/images/png-product-placeholder-3x.png", title: "کلمبیا ارموسو پینک هیدرو", price: "855000" },
+  { id: "4", imgSrc: "/images/png-product-placeholder-3x.png", title: "کلمبیا ارموسو پینک هیدرو", price: "855000" },
+  { id: "5", imgSrc: "/images/png-product-placeholder-3x.png", title: "کلمبیا ارموسو پینک هیدرو", price: "855000" },
 ]
 
 const BestProducts = () => {
   const scrollRef = useRef<HTMLDivElement>(null)
   const cardRef = useRef<HTMLDivElement>(null)
+  const router = useRouter()
 
   const [thumbWidth, setThumbWidth] = useState(0)
   const [thumbPos, setThumbPos] = useState(0)
@@ -48,6 +50,10 @@ const BestProducts = () => {
     window.addEventListener("resize", updateThumb)
     return () => window.removeEventListener("resize", updateThumb)
   }, [])
+
+  const handleRedirect = (productId: string) => {
+    router.push(`/products/${productId}`)
+  }
 
   return (
     <div className="widthLimit relative">
@@ -111,6 +117,7 @@ const BestProducts = () => {
               imgSrc={product.imgSrc}
               title={product.title}
               price={product.price}
+              onSeeProduct={() => handleRedirect(product.id)}
             />
           </div>
         ))}
