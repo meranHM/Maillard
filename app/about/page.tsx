@@ -1,10 +1,13 @@
 "use client"
 
-
+import AboutHero from "@/components/about/AboutHero"
+import Container from "@/components/ui/Container"
 
 const AboutPage = () => {
   return (
-    <div>AboutPage</div>
+    <Container>
+      <AboutHero />
+    </Container>
   )
 }
 

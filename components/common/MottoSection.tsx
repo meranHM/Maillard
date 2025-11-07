@@ -9,7 +9,7 @@ const MottoSection = () => {
     >
       {/* Underlay */}
       <div
-        className="z-0 absolute w-full max-w-[371px] h-auto"
+        className="absolute inset-0 w-full max-w-[371px] h-auto z-0 mx-auto"
       >
         <Image
           className="object-cover object-center pointer-events-none select-none"
